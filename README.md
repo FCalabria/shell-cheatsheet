@@ -10,5 +10,5 @@
   - `-r` recursively searchs in all files. Use it with a directory instead of *filename*
   
 - `tree` logs the directory structure like a tree, including nested
-- `sed 's/<oldExpresion>/<newExpresion>/ <filename>` logs the file substituting *oldExpresion* for *newExpresion*
+- `sed 's/<oldExpresion>/<newExpresion>/' <filename>` logs the file substituting *oldExpresion* for *newExpresion*
   - `-E` support for all regex instead of `<oldExpresion>`
