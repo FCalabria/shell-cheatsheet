@@ -9,4 +9,4 @@
   - `-E` support for all regex instead of `<text>`
   - `-r` recursively searchs in all files. Use it with a directory instead of *filename*
   
--`tree` logs the directory structure like a tree, including nested
+- `tree` logs the directory structure like a tree, including nested
