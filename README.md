@@ -12,3 +12,9 @@
 - `tree` logs the directory structure like a tree, including nested
 - `sed 's/<oldExpresion>/<newExpresion>/' <filename>` logs the file substituting *oldExpresion* for *newExpresion*
   - `-E` support for all regex instead of `<oldExpresion>`
+  - `-i 'subfix'` modify the original file and save the original one adding `subfix` to the name (for example, .old). If no subfix is provided, will not create the backup
+- `mv <filename1> <filename2>` renames `<filename1>` to `filename2`
+- `> <filename>` Will write the shell *stdout* to the file (replacing content)
+- `2> <filename>` Will write the shell *stderror* to the file (replacing content)
+- `&> <filename>` Will write the shell *stdout* and *stderror* to the file (replacing content)
+- `>> <filenam>` Will append the shell *stdout* to the file
