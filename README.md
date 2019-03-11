@@ -1,5 +1,7 @@
 # Shell Cheatsheet
 
+## Commands
+
 - `cat <filename>` logs a file
 - `head -n <number> <filename>` logs the first *number* lines of a file
 - `tail -n <number> <filename>` logs the last *number* lines of a file
@@ -18,3 +20,10 @@
 - `2> <filename>` Will write the shell *stderror* to the file (replacing content)
 - `&> <filename>` Will write the shell *stdout* and *stderror* to the file (replacing content)
 - `>> <filenam>` Will append the shell *stdout* to the file
+
+## Writing scripts
+
+`#!/bin/sh` at the begining allows the script to be run writing just `myscript.sh` instead of `sh myscript.sh` on the command line.
+
+`set -e` The script will exit early if any line fails
+`set -o pipefail` The script will mark lines as failed if any piped command on it fails
