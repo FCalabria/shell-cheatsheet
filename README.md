@@ -19,7 +19,7 @@
 - `> <filename>` Will write the shell *stdout* to the file (replacing content)
 - `2> <filename>` Will write the shell *stderror* to the file (replacing content)
 - `&> <filename>` Will write the shell *stdout* and *stderror* to the file (replacing content)
-- `>> <filenam>` Will append the shell *stdout* to the file
+- `>> <filename>` Will append the shell *stdout* to the file
 
 ## Writing scripts
 
@@ -27,3 +27,31 @@
 
 `set -e` The script will exit early if any line fails
 `set -o pipefail` The script will mark lines as failed if any piped command on it fails
+
+### Variables
+
+Variables are declared just like this `varname=value` but to be referenced need to have a $ before `$varname`
+
+Double quotes enable variable interpolation, while single quotes don't. Use with care.
+
+```shell
+myVar=1
+
+echo "This is my var $myVar"
+# This is my var 1
+echo 'This is my var $myVar'
+# This is my var $myVar
+```
+
+### Loops and conditionals
+
+```shell
+for <varname> in <collection>; do
+  # Code here
+done
+
+# For example
+for file in src/*.md; do
+  echo "$file"
+done
+```
