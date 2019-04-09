@@ -20,6 +20,8 @@
 - `2> <filename>` Will write the shell *stderror* to the file (replacing content)
 - `&> <filename>` Will write the shell *stdout* and *stderror* to the file (replacing content)
 - `>> <filename>` Will append the shell *stdout* to the file
+- `echo $?` Will print the exit code of the last command. 0 means no error.
+- `<command> | <command>` Will run the first *command* and pass its output as the argument for the second *command*
 
 ## Writing scripts
 
@@ -34,6 +36,8 @@ Variables are declared just like this `varname=value` but to be referenced need 
 
 Double quotes enable variable interpolation, while single quotes don't. Use with care.
 
+If you don't use quotes at all and your variable has whitespaces, it will be interpreted as different arguments.
+
 ```shell
 myVar=1
 
@@ -41,6 +45,17 @@ echo "This is my var $myVar"
 # This is my var 1
 echo 'This is my var $myVar'
 # This is my var $myVar
+```
+
+To assign the output of a command to a variable, you need to encapsulate it like `myVar=$(echo "here")`.
+
+```shell
+# This will error
+myVar=echo "here"
+
+# This will set myVar to here
+myVar=$(echo "here")
+
 ```
 
 ### Loops and conditionals
@@ -55,3 +70,47 @@ for file in src/*.md; do
   echo "$file"
 done
 ```
+
+If is done to work with standard error codes and if a comand exits with anything but a 0, it will evaluate to false.
+
+We can use the `-q` flag to avoid outputs of anything on the `if` check
+
+```shell
+if <command>; then
+  # Code here
+fi
+
+# For example
+if grep -q port "$file"; then
+  echo "$file"
+fi
+```
+
+Or to compare expresions
+
+
+```shell
+if [ <comparison> ]; then
+  # Code here
+fi
+
+# For example
+if [ "$port" -lt 5000 ]; then
+  echo "Port is under 5000"
+fi
+```
+
+
+```shell
+if <condition>; then
+  # Code here
+else
+  # Code here
+fi
+```
+
+Some comparators:
+
+- `<a> -lt <b>` less than
+- `<a> -gt <b>` greater than
+- `-f <filename>` *filename* is a file and exists
