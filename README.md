@@ -114,3 +114,7 @@ Some comparators:
 - `<a> -lt <b>` less than
 - `<a> -gt <b>` greater than
 - `-f <filename>` *filename* is a file and exists
+
+## Resources
+
+- https://learnxinyminutes.com/docs/bash/
