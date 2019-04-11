@@ -28,6 +28,7 @@
 `#!/bin/sh` at the begining allows the script to be run writing just `myscript.sh` instead of `sh myscript.sh` on the command line.
 
 `set -e` The script will exit early if any line fails
+
 `set -o pipefail` The script will mark lines as failed if any piped command on it fails
 
 ### Variables
@@ -114,6 +115,7 @@ Some comparators:
 - `<a> -lt <b>` less than
 - `<a> -gt <b>` greater than
 - `-f <filename>` *filename* is a file and exists
+- `-z "$<variableName>"` *variableName* has a value
 
 ## Resources
 
