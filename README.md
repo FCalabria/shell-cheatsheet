@@ -1,5 +1,12 @@
 # Shell Cheatsheet
 
+* [Commands](#commands)
+* [Writing scripts](#writing-scripts)
+  + [Variables](#variables)
+  + [Loops and conditionals](#loops-and-conditionals)
+* [Resources](#resources)
+
+
 ## Commands
 
 - `cat <filename>` logs a file
