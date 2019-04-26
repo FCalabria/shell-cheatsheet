@@ -1,10 +1,14 @@
 # Shell Cheatsheet
 
 * [Commands](#commands)
+  + [Chaining commands](#chaining-commands)
 * [Writing scripts](#writing-scripts)
   + [Variables](#variables)
+  + [Functions](#functions)
   + [Loops and conditionals](#loops-and-conditionals)
+* [Running scripts](#running-scripts)
 * [Resources](#resources)
+
 
 
 ## Commands
@@ -28,11 +32,13 @@
 - `&> <filename>` Will write the shell *stdout* and *stderror* to the file (replacing content)
 - `>> <filename>` Will append the shell *stdout* to the file
 - `echo $?` Will print the exit code of the last command. 0 means no error.
+
+### Chaining commands
+
 - `<command> | <command>` Will run the first *command* and pass its output as the argument for the second *command*
+- `<command> ; <command>` Will run both commands, independently of their output (i/ errors)
 
 ## Writing scripts
-
-`#!/bin/sh` at the begining allows the script to be run writing just `myscript.sh` instead of `sh myscript.sh` on the command line.
 
 `set -e` The script will exit early if any line fails
 
@@ -65,6 +71,32 @@ myVar=echo "here"
 myVar=$(echo "here")
 
 ```
+
+### Functions
+
+```shell
+# Declaration
+<functionName>() {
+  # Code here
+  firstArgument=$1
+  # etc
+}
+
+# Call
+<functionName> <args>
+
+# For example
+
+printSomething(){
+  echo "$1 and also $2"
+}
+
+printSomething "text" "other text"
+
+# will print
+# text and also other text
+```
+
 
 ### Loops and conditionals
 
@@ -123,6 +155,27 @@ Some comparators:
 - `<a> -gt <b>` greater than
 - `-f <filename>` *filename* is a file and exists
 - `-z "$<variableName>"` *variableName* has a value
+
+## Running scripts
+
+`#!/bin/sh` at the begining allows the script to be run writing just `myscript.sh` instead of `sh myscript.sh` on the command line.
+
+For this to work you may need to set the file as executable (`chmod +x <filename>.sh`)
+
+You can pass arguments to a script the same way you pass them to a function
+
+```shell
+
+# Command line
+./my-script.sh arg1 arg2
+
+# Script
+
+echo "$1 - $2"
+
+# will print
+# arg1 - arg2
+```
 
 ## Resources
 
