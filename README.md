@@ -6,6 +6,7 @@
   + [Variables](#variables)
   + [Functions](#functions)
   + [Loops and conditionals](#loops-and-conditionals)
+  + [Fail checks](#fail-checks)
 * [Running scripts](#running-scripts)
 * [Resources](#resources)
 
@@ -153,8 +154,22 @@ Some comparators:
 
 - `<a> -lt <b>` less than
 - `<a> -gt <b>` greater than
+- `<a> -eq <b>` numeric equal to
 - `-f <filename>` *filename* is a file and exists
 - `-z "$<variableName>"` *variableName* has a value
+
+### Fail checks
+
+You can check the number of arguments provided to a script with `$#`.
+
+So a fail check can be
+
+```shell
+if [ $# -eq 0 ]; then
+  echo "Arguments missing"
+  exit 64
+fi
+```
 
 ## Running scripts
 
